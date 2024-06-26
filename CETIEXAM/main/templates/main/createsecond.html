@@ -1,0 +1,15 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block main %}
+
+
+    <div class="form">
+        <form class="login-form" method="post">
+            {% csrf_token %}
+            {{form.NameCity}}
+            {{form.CodCountry}}
+            is capital: {{form.Capital}}
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+{% endblock %}

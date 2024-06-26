@@ -1,0 +1,48 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block main %}
+<div class="recent-orders">
+                <h2>Data Base</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>CodCity</th>
+                            <th>CityName</th>
+                            <th>Country</th>
+                            <th>Capital</th>
+                        </tr>
+
+                    </thead>
+                    <tbody>
+                    {% for city in cities %}
+                    <tr>
+                    <td>
+                        {{ city.CodCity }}
+                    <td>
+                        {{city.NameCity}}
+                    </td>
+                    <td>
+                        {{city.CodCountry}}
+                    </td>
+                    <td>
+
+                        {% if city.Capital == True %}
+                        yes
+                        {% else %}
+                        no
+                        {% endif %}
+                    </td>
+                    <td>
+                        <form action="{% url 'delete_city' city.CodCity %}" method="post">
+            {% csrf_token %}
+            <button type="submit" style="color:red">Delete</button>
+            </form>
+                        </td>
+                        <td>
+        <a href="{% url 'edit_city' city.CodCity %}">Edit</a>
+        </td>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+{% endblock %}

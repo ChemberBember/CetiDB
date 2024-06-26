@@ -1,0 +1,127 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link rel="stylesheet" href="{%static 'css/style.css'%}">
+    <title>Django DataBase</title>
+</head>
+
+<body>
+    <div     class="container">
+{% block sidebar %}
+<aside>
+            <div class="toggle">
+                <div class="logo">
+                    <img src="{%static 'images/DB Logo.png'%}">
+                    <h2>Django<span class="danger">DB</span></h2>
+                </div>
+                <div class="close" id="close-btn">
+                    <span class="material-icons-sharp">
+                        close
+                    </span>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                {% if request.path == '/createfirst' %}
+                <a href="createfirst" class="activedashboard">
+                    <span class="material-icons-sharp">
+                        dashboard
+                    </span>
+                    <h3>Add First</h3>
+                </a>
+                {% else %}
+                <a href="createfirst">
+                    <span class="material-icons-sharp">
+                        dashboard
+                    </span>
+                    <h3>Add First</h3>
+                </a>
+                {% endif %}
+                {% if request.path == '/createsecond' %}
+                <a href="createsecond" class="active">
+                    <span class="material-icons-sharp">
+                        person_outline
+                    </span>
+                    <h3>Add Second</h3>
+                </a>
+                {% else %}
+                <a href="createsecond">
+                    <span class="material-icons-sharp">
+                        person_outline
+                    </span>
+                    <h3>Add Second</h3>
+                </a>
+                {% endif %}
+
+                {% if request.path == '/first' %}
+                <a href="first" class="active">
+                    <span class="material-icons-sharp">
+                        insights
+                    </span>
+                    <h3>First</h3>
+                </a>
+                {% else %}
+                <a href="first">
+                    <span class="material-icons-sharp">
+                        insights
+                    </span>
+                    <h3>First</h3>
+                </a>
+                {% endif %}
+
+                {% if request.path == '/second' %}
+                <a href="second" class="active">
+                    <span class="material-icons-sharp">
+                        insights
+                    </span>
+                    <h3>Second</h3>
+                </a>
+                {% else %}
+                <a href="second">
+                    <span class="material-icons-sharp">
+                        insights
+                    </span>
+                    <h3>Second</h3>
+                </a>
+                {% endif %}
+
+                {% if request.path == '/settings' %}
+                <a href="settings" class="active">
+                    <span class="material-icons-sharp">
+                        settings
+                    </span>
+                    <h3>Settings</h3>
+                </a>
+                {% else %}
+                <a href="settings">
+                    <span class="material-icons-sharp">
+                        settings
+                    </span>
+                    <h3>Credits</h3>
+                </a>
+                {% endif %}
+                </a>
+            </div>
+        </aside>
+{% endblock %}
+<main>
+{% block main %}
+    <h1>
+    {%block title%}
+    Main Block
+    {%endblock%}
+    </h1>
+
+{% endblock %}
+    </main>
+
+    {% block jscripts %}
+    <script src="{%static 'JavaScript/index.js'%}"></script>
+    {% endblock %}
+</body>
+</html>
